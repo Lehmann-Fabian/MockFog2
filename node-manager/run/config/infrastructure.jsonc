@@ -21,6 +21,21 @@
             "machine_name": "server3",
             "type": "t3.small",
             "image": "ami-08c148bb835696b45"
+        },
+        {
+            "machine_name": "server4",
+            "type": "t3.small",
+            "image": "ami-08c148bb835696b45"
+        },
+        {
+            "machine_name": "server5",
+            "type": "t3.small",
+            "image": "ami-08c148bb835696b45"
+        },
+        {
+            "machine_name": "server6",
+            "type": "t3.small",
+            "image": "ami-08c148bb835696b45"
         }
     ],
     /*
@@ -57,6 +72,50 @@
         {
             "from": "server1",
             "to": "server3",
+            "delay": 1, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
+            "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
+            "delay-distro": 0, // connection delay distribution in ms
+            "duplicate": 0, // connection duplicate probablity in %
+            "loss": 20, // connection loss probability in %
+            "corrupt": 0, // connection corrupt probality in %
+            "reordering": 0 // connection reordering probability in %
+        },
+        {
+            "from": "server4",
+            "to": "server3",
+            "delay": 1, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
+            "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
+            "delay-distro": 0, // connection delay distribution in ms
+            "duplicate": 0, // connection duplicate probablity in %
+            "loss": 20, // connection loss probability in %
+            "corrupt": 0, // connection corrupt probality in %
+            "reordering": 0 // connection reordering probability in %
+        },
+        {
+            "from": "server5",
+            "to": "server4",
+            "delay": 1, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
+            "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
+            "delay-distro": 0, // connection delay distribution in ms
+            "duplicate": 0, // connection duplicate probablity in %
+            "loss": 20, // connection loss probability in %
+            "corrupt": 0, // connection corrupt probality in %
+            "reordering": 0 // connection reordering probability in %
+        },
+        {
+            "from": "server5",
+            "to": "server6",
+            "delay": 1, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
+            "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
+            "delay-distro": 0, // connection delay distribution in ms
+            "duplicate": 0, // connection duplicate probablity in %
+            "loss": 20, // connection loss probability in %
+            "corrupt": 0, // connection corrupt probality in %
+            "reordering": 0 // connection reordering probability in %
+        },
+        {
+            "from": "server6",
+            "to": "server1",
             "delay": 1, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
             "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
             "delay-distro": 0, // connection delay distribution in ms
