@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/MoeweX/MockFog2#readme",
   "dependencies": {
+    "core-js": "^3.6.5",
     "express": "^4.17.1",
     "got": "^11.5.0",
     "node-dijkstra": "^2.5.0",
@@ -26,6 +27,6 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "mocha": "^8.0.1"
+    "mocha": "^8.1.3"
   }
 }

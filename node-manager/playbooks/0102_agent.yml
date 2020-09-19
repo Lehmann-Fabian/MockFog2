@@ -14,6 +14,7 @@
           - iproute-tc
           - python3
           - python3-pip
+          - python-pip
           - rsync
 
       # to allow non-root usage to use tcconfig for easier manual debugging
@@ -30,16 +31,16 @@
       shell: pip3 install "tcconfig==0.25.2"
       become: yes
 
-    - name: Install Docker SDK
-      pip:
-        name: docker
-      become: yes
+    #- name: Install Docker SDK
+    #  pip:
+    #    name: docker
+    #  become: yes
 
-    - name: Start Docker Service
-      service:
-        name: docker
-        state: started
-      become: yes
+    #- name: Start Docker Service
+    #  service:
+    #    name: docker
+    #    state: started
+    #  become: yes
 
     - name: Copy Agent
       synchronize:
