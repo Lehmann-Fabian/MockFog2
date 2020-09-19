@@ -1,5 +1,6 @@
 .DS_Store
-node-manager/run/
+node-manager/run/*
+!node-manager/run/config/
 node-manager/node_modules/*
 node-agent/node_modules/*
 node-agent/tmptcconfig.json
