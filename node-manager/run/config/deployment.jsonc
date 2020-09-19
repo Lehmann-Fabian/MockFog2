@@ -1,0 +1,4 @@
+// defines on which machines of infrastructure.jsonc the containers of container.jsonc will be deployed
+[
+    
+]

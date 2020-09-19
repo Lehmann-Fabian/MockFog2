@@ -1,0 +1,100 @@
+// TODO split resource manipulation instructions to machine and connection based
+// defines the orchestration schedule and meta data
+{
+    "maximum_state_change_delay": 500, // in ms; if the Node Manager detects a larger delay, the orchestration schedule exeuction is invalid
+    // each state comprises instructions applied while transitioning to this state and conditions for state transitions
+    "states": [
+        {
+            "state_name": "initial", // the name of the first state must be initial, use it to reset the infrastructure
+            "connection_manipulation_instructions": "reset", // this re-applies all connection manipulations from infrastructure.jsonc
+            "machine_manipulation_instructions": "reset", // this re-applies all machine manipulations from infrastructure.jsonc
+            "application_instructions": [],
+            "state_notifications": [],
+            // when all conditions for the transition to any stage are met, a transition to this state begins
+            "transition_conditions": [
+                {
+                    "type": "time-based", // the type can be time or event
+                    "active-for": 10000, // how long to stay in this state if type = time
+                    "next_state": "s1"
+                }
+            ]
+        },
+        {
+            "state_name": "s1", // the name of the first state must be initial, use it to reset the infrastructure
+            "connection_manipulation_instructions": [
+                {
+                    "from": "server1",
+                    "to": "server2",
+                    "delay": 50, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
+                    "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
+                    "delay-distro": 0, // connection delay distribution in ms
+                    "duplicate": 10, // connection duplicate probablity in %
+                    "loss": 40, // connection loss probability in %
+                    "corrupt": 10, // connection corrupt probality in %
+                    "reordering": 5 // connection reordering probability in %
+                }
+            ],
+            "machine_manipulation_instructions": "reset", // this re-applies all machine manipulations from infrastructure.jsonc
+            "application_instructions": [],
+            "state_notifications": [],
+            // when all conditions for the transition to any stage are met, a transition to this state begins
+            "transition_conditions": [
+                {
+                    "type": "time-based", // the type can be time or event
+                    "active-for": 10000, // how long to stay in this state if type = time
+                    "next_state": "s2"
+                }
+            ]
+        },
+        {
+            "state_name": "s2", // the name of the first state must be initial, use it to reset the infrastructure
+            "connection_manipulation_instructions": [
+                {
+                    "from": "server1",
+                    "to": "server2",
+                    "delay": 5000, // connection latency/delay in ms, set on each machine so roundtrip will be 20ms
+                    "rate": "50mbps", // available connection bandwidth rate (units: bps, kbps, mbps, gbps)
+                    "delay-distro": 0, // connection delay distribution in ms
+                    "duplicate": 10, // connection duplicate probablity in %
+                    "loss": 100, // connection loss probability in %
+                    "corrupt": 10, // connection corrupt probality in %
+                    "reordering": 5 // connection reordering probability in %
+                }
+            ],
+            "machine_manipulation_instructions": "reset", // this re-applies all machine manipulations from infrastructure.jsonc
+            "application_instructions": [],
+            "state_notifications": [],
+            // when all conditions for the transition to any stage are met, a transition to this state begins
+            "transition_conditions": [
+                {
+                    "type": "time-based", // the type can be time or event
+                    "active-for": 10000, // how long to stay in this state if type = time
+                    "next_state": "s3"
+                }
+            ]
+        },
+        {
+            "state_name": "s3", // the name of the first state must be initial, use it to reset the infrastructure
+            "connection_manipulation_instructions":  "reset",
+            "machine_manipulation_instructions": "reset", // this re-applies all machine manipulations from infrastructure.jsonc
+            "application_instructions": [],
+            "state_notifications": [],
+            // when all conditions for the transition to any stage are met, a transition to this state begins
+            "transition_conditions": [
+                {
+                    "type": "time-based", // the type can be time or event
+                    "active-for": 10000, // how long to stay in this state if type = time
+                    "next_state": "final"
+                }
+            ]
+        },
+        {
+            "state_name": "final",
+            "connection_manipulation_instructions": "reset",
+            "machine_manipulation_instructions": "reset",
+            "application_instructions": [],
+            "state_notifications": [],
+            "transition_conditions": [] // the final event has no transition condition
+        }
+    ]
+}
