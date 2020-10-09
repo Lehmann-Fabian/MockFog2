@@ -14,8 +14,8 @@ export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 cd node-manager
 
 node app.js bootstrap
-node app.js agent
-node app.js manipulate
+# node app.js agent
+# node app.js manipulate
 
 #install kubernetes
 
